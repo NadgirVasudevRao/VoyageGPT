@@ -123,12 +123,9 @@ port = 5000
 
 ### Project Structure
 ```
-ai-trip-planner/
+VoyageGPT/
 ├── app.py                 # Main Streamlit app
 ├── trip_planner.py        # Core trip planning logic
-├── .streamlit/           # Streamlit configuration
-│   └── config.toml
-├── .env.example          # Environment template
 └── README.md            # This file
 ```
 
