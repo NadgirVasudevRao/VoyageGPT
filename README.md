@@ -126,7 +126,6 @@ port = 5000
 ai-trip-planner/
 ├── app.py                 # Main Streamlit app
 ├── trip_planner.py        # Core trip planning logic
-├── prompts.py            # AI prompt templates
 ├── .streamlit/           # Streamlit configuration
 │   └── config.toml
 ├── .env.example          # Environment template
