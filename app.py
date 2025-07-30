@@ -31,19 +31,11 @@ st.markdown("""
         border-bottom: 2px solid #F24236;
         padding-bottom: 0.5rem;
     }
-    .cost-breakdown {
-        background-color: #F8F9FA;
-        padding: 1rem;
-        border-radius: 10px;
-        border-left: 4px solid #4ECDC4;
-        margin: 1rem 0;
-    }
-    .activity-card {
+    .stMetric {
         background-color: #FFFFFF;
         padding: 1rem;
         border-radius: 8px;
         border: 1px solid #E9ECEF;
-        margin: 0.5rem 0;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 </style>
@@ -199,7 +191,7 @@ if st.session_state.planning_complete and st.session_state.trip_data:
     # AI Reasoning
     if trip.get('reasoning'):
         st.markdown('<div class="section-header">🤖 Why This Destination?</div>', unsafe_allow_html=True)
-        st.markdown(f'<div class="activity-card">{trip["reasoning"]}</div>', unsafe_allow_html=True)
+        st.write(trip["reasoning"])
     
     # Daily Itinerary
     st.markdown('<div class="section-header">📋 Daily Itinerary</div>', unsafe_allow_html=True)
@@ -228,27 +220,19 @@ if st.session_state.planning_complete and st.session_state.trip_data:
         col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown('<div class="cost-breakdown">', unsafe_allow_html=True)
             st.markdown("**🚗 Transport Costs:**")
-            st.markdown(f"• {transport_mode.title()}: ₹{cost_breakdown.get('transport', 0):,}")
-            st.markdown("</div>", unsafe_allow_html=True)
+            st.write(f"• {transport_mode.title()}: ₹{cost_breakdown.get('transport', 0):,}")
             
-            st.markdown('<div class="cost-breakdown">', unsafe_allow_html=True)
             st.markdown("**🍽️ Food & Dining:**")
-            st.markdown(f"• Total food: ₹{cost_breakdown.get('food', 0):,}")
-            st.markdown("</div>", unsafe_allow_html=True)
+            st.write(f"• Total food: ₹{cost_breakdown.get('food', 0):,}")
         
         with col2:
-            st.markdown('<div class="cost-breakdown">', unsafe_allow_html=True)
             st.markdown("**🏨 Accommodation:**")
-            st.markdown(f"• Total stay: ₹{cost_breakdown.get('accommodation', 0):,}")
-            st.markdown("</div>", unsafe_allow_html=True)
+            st.write(f"• Total stay: ₹{cost_breakdown.get('accommodation', 0):,}")
             
-            st.markdown('<div class="cost-breakdown">', unsafe_allow_html=True)
             st.markdown("**🎭 Activities & Misc:**")
-            st.markdown(f"• Activities: ₹{cost_breakdown.get('activities', 0):,}")
-            st.markdown(f"• Miscellaneous: ₹{cost_breakdown.get('miscellaneous', 0):,}")
-            st.markdown("</div>", unsafe_allow_html=True)
+            st.write(f"• Activities: ₹{cost_breakdown.get('activities', 0):,}")
+            st.write(f"• Miscellaneous: ₹{cost_breakdown.get('miscellaneous', 0):,}")
     
     # Reset button
     st.markdown("---")
