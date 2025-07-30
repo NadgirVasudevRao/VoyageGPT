@@ -1,6 +1,6 @@
 # AI Trip Planner 🌍
 
-An intelligent Streamlit-based trip planning application that generates personalized travel itineraries for Indian destinations using Hugging Face LLMs.
+A GenAI-powered multilingual trip planner that builds mood-based, budget-friendly itineraries for Indian destinations using Hugging Face LLMs and Streamlit.
 
 ## 🌟 Features
 
