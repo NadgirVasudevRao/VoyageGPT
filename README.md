@@ -194,7 +194,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ### Getting Help
 - **Issues**: Report bugs via GitHub Issues
 - **Features**: Request features via GitHub Issues
-- **Documentation**: Refer to `replit.md` for technical details
 
 ### API Limits
 - **Hugging Face**: Free tier includes generous limits
