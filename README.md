@@ -82,9 +82,6 @@ Fallback strategy among:
 voyagegpt/
 ├── app.py               # Main Streamlit frontend
 ├── trip_planner.py      # Core itinerary logic
-├── prompts.py           # Prompt templates
-├── hugging_face_token.txt  # (ignored via .gitignore)
-├── .env.example         # Env variable guide
 ├── README.md            # This file
 ```
 
