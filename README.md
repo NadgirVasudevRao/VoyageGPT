@@ -122,10 +122,8 @@ voyagegpt/
 ├── app.py                 # Main Streamlit application
 ├── trip_planner.py        # Core AI trip planning logic
 ├── prompts.py            # AI prompt templates
-├── github_requirements.txt  # Python dependencies
+├── requirements.txt      # Python dependencies
 ├── README.md             # This file
-├── .env.example          # Environment variable template
-└── replit.md            # Project documentation
 ```
 
 ## Configuration
