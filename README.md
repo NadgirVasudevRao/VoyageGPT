@@ -1,210 +1,221 @@
-# 🌍 AI Trip Planner – VoyageGPT
+# VoyageGPT - AI-Powered Indian Trip Planner
 
-**VoyageGPT** is an intelligent, Streamlit-based GenAI application that generates **personalized travel itineraries** for Indian destinations using **Hugging Face LLMs**. It supports mood-based planning, budget considerations, and real tourist locations.
+VoyageGPT is an intelligent travel planning application that creates personalized itineraries for Indian destinations using AI-powered recommendations and multilingual support.
 
----
+## Features
 
-## 🌟 Features
+### 🤖 AI-Powered Planning
+- **Hugging Face Integration**: Uses advanced language models for intelligent trip recommendations
+- **Mood-Based Recommendations**: Choose from Adventurous, Fun, or Peaceful travel styles
+- **Budget-Aware Planning**: Tailored suggestions for Budget, Mid-range, or Luxury preferences
+- **Authentic Destinations**: Curated database of 20+ popular Indian destinations
 
-* 🧠 **Mood-Based Planning** – Adventurous, Fun, or Peaceful
-* 📊 **Dynamic Pricing** – Real-time cost calculation with transport
-* 🗺️ **Destination-Specific Activities** – Includes authentic tourist spots
-* 💰 **Budget Awareness** – Options from ₹15K to ₹1.5L+
-* 🚗 **Comprehensive Transport Modes** – Flight, Train, Bus, Car, Bike
-* 📍 **Real Indian Locations** – Like Amber Fort, Rohtang Pass, Taj Mahal
+### 🌐 Multilingual Support
+- **10 Indian Languages**: Hindi, Bengali, Tamil, Telugu, Gujarati, Kannada, Marathi, Punjabi, Malayalam
+- **Real-time Translation**: Automatic translation of itineraries using Google Translate
+- **Fallback System**: Multiple translation services for reliability
 
----
+### 📋 Comprehensive Itineraries
+- **Daily Activity Plans**: Detailed day-by-day schedules with themed activities
+- **Cost Breakdowns**: Transparent pricing with transport, accommodation, food, and activity costs
+- **Transport Options**: Support for flights, trains, buses, cars, and bikes
+- **Duration Flexibility**: Plan trips from 1 to 14 days
 
-## 🏔️ Supported Destinations
+## Installation
 
-### Hill Stations
+### Prerequisites
+- Python 3.8 or higher
+- Hugging Face API token (free)
 
-* Manali – Rohtang Pass, Solang Valley, Hidimba Temple
-* Shimla – Mall Road, Christ Church, Jakhoo Temple
-* Rishikesh – Laxman Jhula, Beatles Ashram
+### Setup
 
-### Historical Cities
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/voyagegpt.git
+   cd voyagegpt
+   ```
 
-* Jaipur – Amber Fort, Hawa Mahal, City Palace
-* Agra – Taj Mahal, Agra Fort, Fatehpur Sikri
-* Udaipur – Lake Pichola, City Palace
+2. **Install dependencies**
+   ```bash
+   pip install -r github_requirements.txt
+   ```
 
-### Spiritual & Cultural
+3. **Set up environment variables**
+   ```bash
+   # Create .env file
+   echo "HUGGING_FACE_TOKEN=your_token_here" > .env
+   ```
 
-* Varanasi – Ganges Ghats, Kashi Vishwanath
-* Amritsar – Golden Temple, Wagah Border
+4. **Get Hugging Face API Token**
+   - Visit [Hugging Face Settings](https://huggingface.co/settings/tokens)
+   - Create a new token
+   - Copy the token starting with "hf_"
 
-### Beaches & Backwaters
+5. **Run the application**
+   ```bash
+   streamlit run app.py
+   ```
 
-* Goa – Beaches, Portuguese Heritage
-* Kochi – Backwaters, Chinese Fishing Nets
+## Usage
 
----
+### Basic Trip Planning
 
-## 🚀 Quick Start
+1. **Select Your Preferences**
+   - Choose origin and destination cities
+   - Pick your travel mood (Adventurous/Fun/Peaceful)
+   - Set budget level and trip duration
+   - Select transport mode
 
-### ✅ Prerequisites
+2. **Choose Language**
+   - Select from 10 supported Indian languages
+   - All recommendations will be translated automatically
 
-* Python 3.8+
-* Hugging Face API token
+3. **Generate Your Trip**
+   - Click "Generate Trip Plan"
+   - Get AI-powered personalized recommendations
+   - View detailed itineraries with cost breakdowns
 
-### 🛠️ Installation
+### Example Usage
 
-```bash
-git clone https://github.com/yourusername/ai-trip-planner.git
-cd ai-trip-planner
-pip install -r requirements.txt
+```python
+# Initialize the trip planner
+planner = TripPlanner()
+
+# Generate a trip
+itinerary = planner.generate_itinerary(
+    mood="adventurous",
+    budget="mid-range", 
+    duration=7,
+    user_city="Delhi",
+    destination_city="Manali",
+    transport_mode="flight",
+    language="hi"  # Hindi
+)
 ```
 
-### 🔐 Set Up Your API Token
+## Supported Destinations
 
-Create a `.env` file:
+**Hill Stations**: Manali, Shimla, Darjeeling, Ooty, Munnar
+**Beach Destinations**: Goa, Kerala
+**Heritage Cities**: Jaipur, Udaipur, Agra, Varanasi
+**Adventure Spots**: Rishikesh, Ladakh
+**Metro Cities**: Mumbai, Delhi, Bangalore, Chennai, Kolkata
 
-```env
-HUGGING_FACE_TOKEN=your_hugging_face_token_here
-```
+## API Integration
 
-Or set it in your terminal:
+### Hugging Face Models
+The application uses multiple Hugging Face models with automatic fallback:
+- EleutherAI/gpt-neo-125M
+- GPT-2
+- Facebook/blenderbot-400M-distill
+- Microsoft/DialoGPT-small
 
-```bash
-export HUGGING_FACE_TOKEN=your_token_here
-```
+### Translation Services
+- **Primary**: Deep Translator (Google Translate API)
+- **Fallback**: Google Translate Python library
+- **Graceful Degradation**: Returns English if translation fails
 
----
-
-### ▶️ Run Locally
-
-```bash
-streamlit run app.py
-```
-
-Then open `http://localhost:8501` in your browser.
-
----
-
-## 🧠 How It Works
-
-1. Choose mood, budget, and destination
-2. Backend builds a dynamic prompt (`prompts.py`)
-3. Hugging Face model generates itinerary
-4. Output is post-processed and displayed
-5. Estimated cost shown based on distance & mode
-
----
-
-## 🏗️ Architecture
-
-### Frontend
-
-* **Streamlit** for UI
-* Sidebar + main display layout
-* Session-managed interactions
-
-### Backend
-
-* **LLM Integration** via Hugging Face Inference API
-* Prompt engineering logic for personalization
-* Distance-based dynamic pricing
-
----
-
-## 📁 Project Structure
+## File Structure
 
 ```
-ai-trip-planner/
-├── app.py                # Main app UI
-├── trip_planner.py       # Itinerary generation logic
-├── prompts.py            # Prompt templates
-├── .streamlit/
-│   └── config.toml       # Streamlit config
-├── .env.example          # Token template
+voyagegpt/
+├── app.py                 # Main Streamlit application
+├── trip_planner.py        # Core AI trip planning logic
+├── prompts.py            # AI prompt templates
+├── github_requirements.txt  # Python dependencies
 ├── README.md             # This file
+├── .env.example          # Environment variable template
+└── replit.md            # Project documentation
 ```
 
----
+## Configuration
 
-## ⚙️ Configuration
-
-### `.env`
-
+### Environment Variables
 ```env
-HUGGING_FACE_TOKEN=your_token_here
+HUGGING_FACE_TOKEN=your_hf_token_here
 ```
 
-### `.streamlit/config.toml`
+### Streamlit Configuration
+The app includes optimized settings for deployment:
+- Server address: 0.0.0.0
+- Port: 5000 (configurable)
+- Headless mode enabled
 
-```toml
-[server]
-headless = true
-port = 8501
-enableCORS = false
-```
+## Deployment
 
----
+### Streamlit Cloud
+1. Fork this repository
+2. Connect to Streamlit Cloud
+3. Add `HUGGING_FACE_TOKEN` to secrets
+4. Deploy directly from GitHub
 
-## 🧪 Models Used
-
-The app rotates among:
-
-* `facebook/blenderbot-400M-distill`
-* `microsoft/DialoGPT-medium`
-* `gpt2`
-* `EleutherAI/gpt-neo-125M`
-
----
-
-## ✨ Special Features
-
-### 🌟 Dynamic Pricing
-
-* Distance-aware transport costs
-* Budget category adjustments
-* Tiered accommodations
-
-### 📚 Real Content Generation
-
-* No generic text — every plan includes real places
-* Unique plans with themed descriptions
-* Fun language with emotional tone
-
----
-
-## 🚀 Deployment Options
-
-* ✅ **Streamlit Cloud**
-* ✅ **Railway**
-* ✅ **Render**
-* ✅ **Replit**
-
-To deploy:
-
+### Local Development
 ```bash
+# Development mode
 streamlit run app.py --server.port 8501
+
+# Production mode  
+streamlit run app.py --server.port 5000 --server.address 0.0.0.0
 ```
 
+## Contributing
+
+### Development Guidelines
+1. **Code Style**: Follow PEP 8 standards
+2. **Documentation**: Update README.md for new features
+3. **Testing**: Test with multiple languages and destinations
+4. **Dependencies**: Use minimal, stable packages
+
+### Adding New Features
+- **New Destinations**: Update destination database in `trip_planner.py`
+- **Languages**: Add language codes to translation system
+- **AI Models**: Add new models to fallback list
+
+## Error Handling
+
+The application includes comprehensive error handling:
+- **API Failures**: Automatic fallback to alternative models
+- **Translation Errors**: Graceful degradation to English
+- **Network Issues**: User-friendly error messages
+- **Invalid Inputs**: Input validation and suggestions
+
+## Performance
+
+### Optimization Features
+- **Model Fallback**: Multiple AI models for reliability
+- **Caching**: Streamlit caching for better performance
+- **Lightweight Models**: Optimized for free-tier APIs
+- **Minimal Dependencies**: Fast installation and startup
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Support
+
+### Getting Help
+- **Issues**: Report bugs via GitHub Issues
+- **Features**: Request features via GitHub Issues
+- **Documentation**: Refer to `replit.md` for technical details
+
+### API Limits
+- **Hugging Face**: Free tier includes generous limits
+- **Translation**: Google Translate has daily limits
+- **Fallback**: Application works offline with basic features
+
+## Changelog
+
+### v1.0.0 (2025-01-30)
+- ✅ Initial release with AI-powered trip planning
+- ✅ Multilingual support for 10 Indian languages
+- ✅ Mood-based recommendations
+- ✅ Budget-aware cost calculations
+- ✅ Comprehensive destination database
+- ✅ Multiple transport modes
+- ✅ Responsive Streamlit interface
+
 ---
 
-## 🤝 Contributing
+**Built with ❤️ for Indian travelers**
 
-1. Fork the repo
-2. Create a branch: `git checkout -b feature/your-feature`
-3. Commit changes: `git commit -m "Your feature"`
-4. Push and open a Pull Request
-
----
-
-## 📜 License
-
-MIT License – See `LICENSE` for details.
-
----
-
-## 🙏 Acknowledgments
-
-* [Hugging Face](https://huggingface.co)
-* [Streamlit](https://streamlit.io)
-* Indian tourism websites for authentic data
-
----
-
-> **Made with ❤️ for Indian travel lovers & GenAI explorers**
+*Experience the future of travel planning with AI-powered personalization and multilingual support.*
