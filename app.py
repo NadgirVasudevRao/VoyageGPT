@@ -9,7 +9,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS for better styling
+# Custom CSS for better styling with dark mode support
 st.markdown("""
 <style>
     .main-header {
@@ -24,19 +24,36 @@ st.markdown("""
         margin-bottom: 2rem;
     }
     .section-header {
-        color: #2E86AB;
+        color: var(--text-color);
         font-size: 1.5rem;
         font-weight: bold;
         margin: 1.5rem 0 1rem 0;
         border-bottom: 2px solid #F24236;
         padding-bottom: 0.5rem;
     }
-    .stMetric {
-        background-color: #FFFFFF;
-        padding: 1rem;
-        border-radius: 8px;
-        border: 1px solid #E9ECEF;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+        .section-header {
+            color: #4ECDC4;
+        }
+    }
+    
+    /* Streamlit dark theme detection */
+    [data-theme="dark"] .section-header {
+        color: #4ECDC4;
+    }
+    
+    /* Remove default Streamlit metric styling to prevent white boxes */
+    .stMetric > div {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Ensure text is readable in both themes */
+    .stMarkdown, .stWrite {
+        color: inherit;
     }
 </style>
 """, unsafe_allow_html=True)
